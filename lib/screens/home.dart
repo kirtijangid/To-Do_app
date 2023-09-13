@@ -12,7 +12,14 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final todosList = ToDo.todoList();
+  List<ToDo> _found = [];
   final _todoController = TextEditingController();
+
+  @override
+  void initState() {
+    _foundToDo = todosList;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext) {
@@ -135,6 +142,19 @@ class _HomeState extends State<Home> {
       ));
     });
     _todoController.clear();
+  }
+
+  void _runFilter(String enteredKeyWord) {
+    List<ToDo> results = [];
+    if (enteredKeyWord.isEmpty) {
+      results = todosList;
+    } else {
+      results = todosList
+          .where((item) => item.todoText!
+              .toLowerCase()
+              .contains(enteredKeyWord.toLowerCase()))
+          .toList();
+    }
   }
 
   Widget searchBox() {
