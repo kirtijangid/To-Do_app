@@ -8,13 +8,13 @@ class ToDoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ListTile(
-        onTap: () {},
+        onTap: () {
+          print('clicked on ToDo Item ');
+        },
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        contentPadding: EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 5),
+        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         tileColor: Colors.white,
         leading: Icon(
           Icons.check_box,
@@ -41,7 +41,9 @@ class ToDoItem extends StatelessWidget {
             color: Colors.white,
             iconSize: 20,
             icon: Icon(Icons.delete),
-            onPressed: () {},
+            onPressed: () {
+              print('Clicked on delete icon');
+            },
           ),
         ),
       ),
