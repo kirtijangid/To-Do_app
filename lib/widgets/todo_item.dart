@@ -12,6 +12,9 @@ class ToDoItem extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 5),
         tileColor: Colors.white,
         leading: Icon(
           Icons.check_box,
@@ -26,6 +29,8 @@ class ToDoItem extends StatelessWidget {
           ),
         ),
         trailing: Container(
+          padding: EdgeInsets.all(0),
+          margin: EdgeInsets.symmetric(vertical: 12),
           height: 35,
           width: 35,
           decoration: BoxDecoration(
@@ -34,7 +39,7 @@ class ToDoItem extends StatelessWidget {
           ),
           child: IconButton(
             color: Colors.white,
-            iconSize: 22,
+            iconSize: 20,
             icon: Icon(Icons.delete),
             onPressed: () {},
           ),
