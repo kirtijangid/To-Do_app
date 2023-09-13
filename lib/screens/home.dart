@@ -22,11 +22,12 @@ class _HomeState extends State<Home> {
   }
 
   @override
-  Widget build(BuildContext) {
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: tdBGColor,
       appBar: _buildAppBar(),
-      body: Stack(children: [
+      body: Stack(
+        children: [
         Container(
           padding: EdgeInsets.symmetric(
             horizontal: 20,
@@ -48,9 +49,9 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    for (ToDo todo in todosList)
+                    for (ToDo todoo in _foundToDo.reversed)
                       ToDoItem(
-                        todo: todo,
+                        todo: todoo,
                         onToDoChanged: _handleToDoChange,
                         onDeleteItem: _deleteToDoItem,
                       ),
@@ -115,10 +116,12 @@ class _HomeState extends State<Home> {
                     minimumSize: Size(60, 60),
                     elevation: 10,
                   ),
-                ))
+                ),
+              ),
           ]),
         ),
-      ]),
+      ],
+      ),
     );
   }
 
@@ -155,6 +158,10 @@ class _HomeState extends State<Home> {
               .contains(enteredKeyWord.toLowerCase()))
           .toList();
     }
+
+    setState(() {
+      _foundToDo = results;
+    });
   }
 
   Widget searchBox() {
@@ -165,6 +172,7 @@ class _HomeState extends State<Home> {
         borderRadius: BorderRadius.circular(20),
       ),
       child: TextField(
+        onChanged: (value) => _runFilter(value),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(0),
           prefixIcon: Icon(
