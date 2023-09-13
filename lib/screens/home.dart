@@ -43,6 +43,8 @@ class _HomeState extends State<Home> {
                     for (ToDo todo in todosList)
                       ToDoItem(
                         todo: todo,
+                        onToDoChanged: _handleToDoChange,
+                        onDeleteItem: () {},
                       ),
                   ],
                 ),
@@ -108,11 +110,13 @@ class _HomeState extends State<Home> {
       ]),
     );
   }
-void _handleToDoChange(ToDo todo) {
-  setState(() {
-    todo.isDone = !todo.isDone;
-  });
-}
+
+  void _handleToDoChange(ToDo todo) {
+    setState(() {
+      todo.isDone = !todo.isDone;
+    });
+  }
+
   Widget searchBox() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15),
