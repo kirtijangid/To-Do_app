@@ -4,7 +4,7 @@ import 'package:todo_app/model/todo.dart';
 import 'package:todo_app/widgets/todo_item.dart';
 
 class Home extends StatelessWidget {
-  Home({Key? key}) : super(key: key);
+   Home({Key? key}) : super(key: key);
 
   final todosList = ToDo.todoList();
 
@@ -36,7 +36,7 @@ class Home extends StatelessWidget {
                   ),
 
                   for( ToDo todo in todosList)
-                  ToDoItem(),
+                  ToDoItem(todo: todo,),
                 ],
               ),
             ),
